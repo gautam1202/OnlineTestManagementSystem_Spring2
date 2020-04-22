@@ -1,93 +1,111 @@
 package com.capgemini.entity;
 
 import java.math.BigDecimal;
+import java.time.LocalTime;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
-
-import com.sun.istack.NotNull;
-
 @Entity
-@Repository
 @Table(name="TestTable")
-@EnableTransactionManagement
 public class Tests {
-
-	
-	
 	@Id
-	@NotNull
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long testID;
-	@OneToMany
-	private Set<Question> testQuestions;
+	private long testId;
+	@Column
+	private String testTitle;
+	@Column
+	private LocalTime testDuration;
 	@Column
 	private BigDecimal testTotalMarks;
 	@Column
-	private BigDecimal testMarksScored;
+	private long testMarksScored;
+	
+	@Column
+	private LocalTime startTime;
+	@Column
+	private LocalTime endTime;
 	
 	@OneToOne
-	@JoinColumn(name="questionId")
-	private Question q;
-
-	public long getTestID() {
-		return testID;
+	private User user;
+	@OneToMany
+	List<Question> ques;
+	
+	
+	public Tests(long testId, String testTitle, LocalTime testDuration, LocalTime startTime) {
+		super();
+		this.testId = testId;
+		this.testTitle = testTitle;
+		this.testDuration = testDuration;
+		this.testTotalMarks = testTotalMarks;
+		this.testMarksScored = testMarksScored;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.user = user;
+		this.ques = ques;
 	}
-
-	public void setTestID(long testID) {
-		this.testID = testID;
+	public Tests() {
+		// TODO Auto-generated constructor stub
 	}
-
-	public Set<Question> getTestQuestions() {
-		return testQuestions;
+	public long getTestId() {
+		return testId;
 	}
-
-	public void setTestQuestions(Set<Question> testQuestions) {
-		this.testQuestions = testQuestions;
+	public void setTestId(long testId) {
+		this.testId = testId;
 	}
-
+	public String getTestTitle() {
+		return testTitle;
+	}
+	public void setTestTitle(String testTitle) {
+		this.testTitle = testTitle;
+	}
+	public LocalTime getTestDuration() {
+		return testDuration;
+	}
+	public void setTestDuration(LocalTime testDuration) {
+		this.testDuration = testDuration;
+	}
 	public BigDecimal getTestTotalMarks() {
 		return testTotalMarks;
 	}
-
 	public void setTestTotalMarks(BigDecimal testTotalMarks) {
 		this.testTotalMarks = testTotalMarks;
 	}
-
-	public BigDecimal getTestMarksScored() {
+	public long getTestMarksScored() {
 		return testMarksScored;
 	}
-
-	public void setTestMarksScored(BigDecimal testMarksScored) {
+	public void setTestMarksScored(long testMarksScored) {
 		this.testMarksScored = testMarksScored;
 	}
-	public Question getQuestions() {
-		return q;
+	public LocalTime getStartTime() {
+		return startTime;
 	}
-
-	public void setQuestions(Question questions) {
-		this.q = questions;
+	public void setStartTime(LocalTime startTime) {
+		this.startTime = startTime;
 	}
-
-
-	public Tests(long testID, Set<Question> testQuestions, BigDecimal testTotalMarks, BigDecimal testMarksScored) {
-		super();
-		this.testID = testID;
-		this.testQuestions = testQuestions;
-		this.testTotalMarks = testTotalMarks;
-		this.testMarksScored = testMarksScored;
+	public LocalTime getEndTime() {
+		return endTime;
 	}
-
+	public void setEndTime(LocalTime endTime) {
+		this.endTime = endTime;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public List<Question> getQues() {
+		return ques;
+	}
+	public void setQues(List<Question> ques) {
+		this.ques = ques;
+	}
 	
-}
+	
+		}

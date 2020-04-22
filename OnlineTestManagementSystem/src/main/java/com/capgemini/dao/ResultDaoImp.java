@@ -34,7 +34,7 @@ public class ResultDaoImp implements IResultDao{
 	{
 		em.persist(test);
 		BigDecimal totalMarks = new BigDecimal(0);
-		HashSet<Question> questions = (HashSet<Question>) test.getTestQuestions();
+		HashSet<Question> questions = (HashSet<Question>) test.getQues();
 		Iterator<Question> it = questions.iterator();
 		while (it.hasNext()) {
 		Question question = it.next();
@@ -57,8 +57,8 @@ public class ResultDaoImp implements IResultDao{
 
 	@Override
 	public BigDecimal calculateTotalMarks() {
-		Tests test = new Tests(0, null, null, null);
-		Set<Question> testQuestions = test.getTestQuestions();
+		Tests test = new Tests (0, null, null, null);
+		List<Question> testQuestions = test.getQues();
 		Iterator<Question> testQuestionIterator = testQuestions.iterator();
 		BigDecimal testTotalMarks = new BigDecimal(0);
 		while(testQuestionIterator.hasNext())

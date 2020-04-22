@@ -17,6 +17,7 @@ import com.capgemini.entity.Tests;
 		public BigDecimal calculateTotalMarks();
 		public Tests findById(BigInteger testID);
 		public List reterive();
+		
 
 	}
 	
