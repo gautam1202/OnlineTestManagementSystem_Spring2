@@ -24,7 +24,6 @@ public class ResultServiceImp implements IResultService {
 	{
 		return dao.getResult(test);
 	}
-
 	@Override
 	public BigDecimal calculateTotalMarks() {
 		return dao.calculateTotalMarks();

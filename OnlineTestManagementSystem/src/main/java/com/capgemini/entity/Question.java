@@ -27,8 +27,8 @@ public class Question {
 	
 	@Id
 	@NotNull
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long questionID;
+	//@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer questionID;
 	@Column
 	private String questionOptions[]=new String[3];
 	@Column
@@ -50,10 +50,10 @@ public class Question {
 	
 	
 	
-	public long getQuestionID() {
+	public Integer getQuestionID() {
 		return questionID;
 	}
-	public void setQuestionID(long questionID) {
+	public void setQuestionID(Integer questionID) {
 		this.questionID = questionID;
 	}
 	public String[] getQuestionOptions() {
@@ -103,8 +103,10 @@ public class Question {
 	public void setTest(Tests test) {
 		this.test = test;
 	}
+	public Question() {
+	}
 
-	public Question(long questionID, String[] questionOptions, String questionTitle, int questionAnswer,
+	public Question(Integer questionID, String[] questionOptions, String questionTitle, int questionAnswer,
 			double questionMarks, int chosenAnswer, BigDecimal marksScored, Tests test) {
 		super();
 		this.questionID = questionID;
