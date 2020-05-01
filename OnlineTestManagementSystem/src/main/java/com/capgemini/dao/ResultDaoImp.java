@@ -17,31 +17,12 @@ import org.springframework.stereotype.Repository;
 import com.capgemini.entity.Question;
 import com.capgemini.entity.Tests;
 
-
-
-
-@Transactional
 @Repository
 
 public class ResultDaoImp implements IResultDao{
 	
 	@PersistenceContext
 	EntityManager em;
-
-
-	@Override
-	public BigDecimal getResult(Tests test)
-	{
-		em.persist(test);
-		BigDecimal totalMarks = new BigDecimal(0);
-		HashSet<Question> questions = (HashSet<Question>) test.getQues();
-		Iterator<Question> it = questions.iterator();
-		while (it.hasNext()) {
-		Question question = it.next();
-		totalMarks = totalMarks.add(question.getMarksScored());
-		}
-		return totalMarks;
-		}
 
 	
 	@Override
@@ -55,21 +36,6 @@ public class ResultDaoImp implements IResultDao{
 		return q.getResultList();
 	}
 
-	@Override
-	public BigDecimal calculateTotalMarks() {
-		Tests test = new Tests (0, null, null, null);
-		List<Question> testQuestions = test.getQues();
-		Iterator<Question> testQuestionIterator = testQuestions.iterator();
-		BigDecimal testTotalMarks = new BigDecimal(0);
-		while(testQuestionIterator.hasNext())
-		{
-			Question nextQuestion = testQuestionIterator.next();
-			testTotalMarks = testTotalMarks.add(nextQuestion.getMarksScored());
-			test.setTestTotalMarks(testTotalMarks);
-		}
-		return test.getTestTotalMarks();
-		
-	}
 	}
 
 

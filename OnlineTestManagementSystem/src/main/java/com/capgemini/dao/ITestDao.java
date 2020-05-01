@@ -11,10 +11,19 @@ import com.capgemini.entity.*;
 public interface ITestDao {
 
 
-	void create(Tests t);
 	
-
+	public Tests addTest(Tests t);
+	
+    public void deleteTest(int testId);
+	
+	public void updateTest(int testId);
 	
 	
 
 }
+	
+
+	
+	
+
+

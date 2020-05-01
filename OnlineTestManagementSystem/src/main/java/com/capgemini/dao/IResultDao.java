@@ -13,8 +13,6 @@ import com.capgemini.entity.Tests;
 	@Repository
 	public interface IResultDao 
 	{
-		public BigDecimal getResult(Tests test); 
-		public BigDecimal calculateTotalMarks();
 		public Tests findById(BigInteger testID);
 		public List reterive();
 		
