@@ -36,7 +36,7 @@ public class QuestionDaoImp implements IQuestionDao
 Question ques= em.find(Question.class, questionId);
 		
 		ques.setChosenAnswer(1);
-		ques.setMarksScored(new BigDecimal(0));
+		ques.setMarksScored(new Integer(0));
 		ques.setQuestionAnswer(1);
 		ques.setQuestionID(1001);
 		ques.setQuestionMarks(5);

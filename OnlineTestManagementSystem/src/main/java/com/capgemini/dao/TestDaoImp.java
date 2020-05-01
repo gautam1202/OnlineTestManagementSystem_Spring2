@@ -1,15 +1,17 @@
 package com.capgemini.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
 import com.capgemini.entity.Tests;
-
-@Transactional
 @Repository
+@Transactional
 public class TestDaoImp implements ITestDao {
 	
 	@PersistenceContext
@@ -36,6 +38,12 @@ public class TestDaoImp implements ITestDao {
 		t1.setTestTitle("Java Test");
 		System.out.println("Updated...");
 		em.flush();
+	}
+
+	@Override
+	public List<Tests> getAllTest() {
+		Query query = em.createQuery("from Tests t");
+		return query.getResultList();
 	}
 
 	

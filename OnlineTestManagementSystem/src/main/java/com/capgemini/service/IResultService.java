@@ -7,8 +7,8 @@ import com.capgemini.entity.Tests;
 
 
 public interface IResultService {
-	public BigDecimal getResult(Tests test);
-	public BigDecimal calculateTotalMarks();
+	public double getResult(Tests test);
+	public double calculateTotalMarks();
 	Tests findbyId(BigInteger testID);
 	List reterive();
 	

@@ -26,7 +26,7 @@ public class Question {
 	@Column
 	private int chosenAnswer;
 	@Column
-	private BigDecimal marksScored;
+	private int marksScored;
 	
 	@ManyToOne
 	@JoinColumn(name="testId")
@@ -34,7 +34,7 @@ public class Question {
 
 	
 	public Question(long questionID, String[] questionOptions, String questionTitle, int questionAnswer,
-			double questionMarks, int chosenAnswer, BigDecimal marksScored, Tests test) {
+			double questionMarks, int chosenAnswer, int marksScored, Tests test) {
 		super();
 		this.questionID = questionID;
 		this.questionOptions = questionOptions;
@@ -94,11 +94,11 @@ public class Question {
 		this.chosenAnswer = chosenAnswer;
 	}
 
-	public BigDecimal getMarksScored() {
+	public int getMarksScored() {
 		return marksScored;
 	}
 
-	public void setMarksScored(BigDecimal marksScored) {
+	public void setMarksScored(int marksScored) {
 		this.marksScored = marksScored;
 	}
 

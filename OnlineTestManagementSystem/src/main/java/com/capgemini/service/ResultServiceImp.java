@@ -34,29 +34,31 @@ public class ResultServiceImp implements IResultService {
 	
 	
 		@Override
-		public BigDecimal getResult(Tests test)
+		public double getResult(Tests test)
 		{
-			BigDecimal totalMarks = new BigDecimal(0);
-			HashSet<Question> questions = (HashSet<Question>) test.getQues();
-			Iterator<Question> it = questions.iterator();
+			double totalMarks = new Double(0);
+			HashSet<Question> questions = (HashSet<Question>) test.getTestQuestions();
+					Iterator<Question> it = questions.iterator();
 			while (it.hasNext()) {
 			Question question = it.next();
-			totalMarks = totalMarks.add(question.getMarksScored());
+			totalMarks = totalMarks + question.getMarksScored();
+					//add(question.getMarksScored());
 			}
 			return getResult(test);
 		}
 
 	
 	@Override
-	public BigDecimal calculateTotalMarks() {
-		Tests test = new Tests (0, null, null, null);
-		List<Question> testQuestions = test.getQues();
+	public double calculateTotalMarks() {
+		Tests test = new Tests ();
+		List<Question> testQuestions = (List<Question>) test.getTestQuestions();
 		Iterator<Question> testQuestionIterator = testQuestions.iterator();
-		BigDecimal testTotalMarks = new BigDecimal(0);
+		double testTotalMarks = new Double(0);
 		while(testQuestionIterator.hasNext())
 		{
 			Question nextQuestion = testQuestionIterator.next();
-			testTotalMarks = testTotalMarks.add(nextQuestion.getMarksScored());
+			testTotalMarks +=nextQuestion.getMarksScored();
+					//add(nextQuestion.getMarksScored());
 			test.setTestTotalMarks(testTotalMarks);
 		
 	}

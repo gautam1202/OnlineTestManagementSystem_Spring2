@@ -10,23 +10,42 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.capgemini.dao.*;
 import com.capgemini.entity.Question;
+import com.capgemini.entity.Tests;
 
 @SpringBootApplication
 public class OnlineTestManagementSystemApplication implements CommandLineRunner {
 	
 	@Autowired
-	ResultDaoImp resdao;
+	TestDaoImp testdao;
 
 	public static void main(String[] args) {
 		SpringApplication.run(OnlineTestManagementSystemApplication.class, args);
 		
 	}
 
-	@Override
+	/*@Override
 	public void run(String... args) throws Exception {
 		System.out.println("Start");
 	}
+}*/
+	
+	@Override
+	public void run(String... args) throws Exception {
+		
+		Tests t = new Tests();
+		
+		t.setTestTitle("SpringBoot");
+		t.setTestId(105);
+		t.setTestTotalMarks(50);
+		t.setTestMarksScored(42);
+	
+		testdao.addTest(t);
+		System.out.println("Test added successfully..");
+		
+	}
 }
+	
+	
 /*
 	@Autowired
 	IUserDao userDao;
