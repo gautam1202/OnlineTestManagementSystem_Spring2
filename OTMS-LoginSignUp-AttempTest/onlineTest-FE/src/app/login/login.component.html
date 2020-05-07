@@ -1,0 +1,75 @@
+<head>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+</head>
+
+<div class="sidenav">
+         <div class="login-main-text" style="font-size:x-large;">
+        <p> Online Test Management System  </p>
+         </div>
+ </div>
+      <div class="main">
+         <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+               <form id="log1" [formGroup]="loginForm" (ngSubmit)="authenticate()">
+                  <div class="form-group">
+                    <label for="usrid">UserId</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="usrid"
+                      placeholder="Enter UserId"
+                    />
+                  
+                    <div
+                      *ngIf="submitted && loginForm.controls.usrid.errors"
+                      class="error"
+                    >
+                      <div
+                        class="text-danger"
+                        *ngIf="loginForm.controls.usrid.errors.required"
+                      >
+                        Username is required
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      formControlName="password"
+                      placeholder="Enter Password"
+                    />
+                    <div *ngIf="submitted && loginForm.controls.password.errors">
+                      <div
+                        class="text-danger"
+                        *ngIf="loginForm.controls.password.errors.required"
+                      >
+                        Password is required
+                      </div>
+                    </div>
+                  </div>
+                  &nbsp;&nbsp;&nbsp;<button class="btn btn-success btn-block">
+                    Login
+                  </button>
+                  &nbsp;
+                  <button
+                     class="btn btn-danger btn-block"
+                      type="reset"
+                      routerLink="/register">
+                      SignUp
+                   </button>
+                  &nbsp;
+                  <br />
+                  <div *ngIf="errorFlag">
+                    <div class="text-danger">
+                      {{message}}
+                    </div>
+                  </div>
+                </form>
+            </div>
+         </div>
+      </div>

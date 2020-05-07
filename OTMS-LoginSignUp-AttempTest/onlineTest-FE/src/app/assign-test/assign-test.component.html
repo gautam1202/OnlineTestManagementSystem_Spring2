@@ -1,0 +1,53 @@
+<div class="assin-form">
+<form id="log2" [formGroup]="assignForm" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="usrid">UserId</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="usrid"
+        placeholder="Enter UserId"
+      />
+    
+      <div
+        *ngIf="submitted && assignForm.controls.usrid.errors"
+        class="error"
+      >
+        <div
+          class="text-danger"
+          *ngIf="assignForm.controls.usrid.errors.required"
+        >
+          UserId is required
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="testId">TestId</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="testId"
+        placeholder="Enter TestId"
+      />
+      <div *ngIf="submitted && assignForm.controls.testIderrors">
+        <div
+          class="text-danger"
+          *ngIf="assignForm.controls.testId.errors.required"
+        >
+          TestId is required
+        </div>
+      </div>
+    </div>
+    &nbsp;&nbsp;&nbsp;<button class="btn btn-success btn-block">
+      Submit
+    </button>
+    &nbsp;
+    &nbsp;
+    <br />
+    <div *ngIf="errorFlag">
+      <div class="text-danger">
+        {{message}}
+      </div>
+    </div>
+  </form>
+</div>
