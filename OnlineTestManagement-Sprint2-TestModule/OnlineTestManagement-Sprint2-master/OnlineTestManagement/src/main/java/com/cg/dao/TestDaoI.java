@@ -21,6 +21,7 @@ public interface TestDaoI {
 	public Test findById(int testId);
 
 	void updateTest(Test test);
+	public Test deleteTest(Test test);
 	
 
 }
